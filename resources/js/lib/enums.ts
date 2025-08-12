@@ -1,0 +1,18 @@
+export const stacks = [
+  'fullstack',
+  'frontend',
+  'backend',
+  'ui design',
+  'mysql',
+  'mongodb',
+  'postgresql',
+  'php',
+  'typescript',
+  'javascript',
+  'react',
+  'golang',
+  'c#',
+  'laravel',
+  'nextjs',
+  'nestjs',
+];

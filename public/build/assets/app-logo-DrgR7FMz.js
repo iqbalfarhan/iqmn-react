@@ -1,0 +1,1 @@
+import{j as e}from"./app-DYBD7EQ1.js";import{I as s}from"./iqmn-svg-DJ6j5Eqg.js";function i(){return e.jsxs(e.Fragment,{children:[e.jsx("div",{className:"flex aspect-square size-8 items-center justify-center rounded",children:e.jsx(s,{className:"size-9"})}),e.jsx("div",{className:"ml-1 grid flex-1 text-left text-sm"})]})}export{i as A};
