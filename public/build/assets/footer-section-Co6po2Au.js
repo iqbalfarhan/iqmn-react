@@ -1,1 +1,0 @@
-import{J as e,j as r}from"./app-DYBD7EQ1.js";/* empty css            */const p=()=>{const{inspire:t}=e().props;return r.jsx("div",{className:"px-4 py-12 text-center",children:t})};export{p as default};

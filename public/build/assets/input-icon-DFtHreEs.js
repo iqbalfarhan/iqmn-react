@@ -1,1 +1,0 @@
-import{j as t}from"./app-DYBD7EQ1.js";import{I as a}from"./input-CM22IBX4.js";import{S as o}from"./search-DBQ5NLfB.js";const p=({icon:s=o,className:e,...r})=>t.jsxs("div",{className:"relative w-full",children:[t.jsx(s,{className:"absolute top-1/2 left-2.5 h-4 w-4 -translate-y-1/2 text-muted-foreground"}),t.jsx(a,{type:"text",className:`pl-8 ${e??""}`,...r})]});export{p as I};
