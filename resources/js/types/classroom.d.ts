@@ -1,0 +1,15 @@
+import { User } from './user';
+
+export type EnumVisibility = 'public' | 'private';
+
+export type Classroom = {
+  id: number;
+  name: string;
+  code: string;
+  user_id: User['id'];
+  user: User;
+  description: string;
+  visibility: EnumVisibility;
+  created_at: string;
+  updated_at: string;
+};
