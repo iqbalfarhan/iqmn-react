@@ -11,7 +11,8 @@ class DashboardController extends Controller
     public function index()
     {
         return Inertia::render('dashboard/index', [
-            'classrooms' => Classroom::with(['user', 'materials'])->mine()->get(),
+            'classrooms' => Classroom::with(['media', 'user', 'materials'])->mine()->get(),
+            'memberof' => $this->user->memberof->load(['media', 'user', 'materials'])
         ]);
     }
 

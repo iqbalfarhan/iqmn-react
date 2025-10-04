@@ -61,16 +61,11 @@ export function AppSidebar() {
           <NavMain
             items={[
               {
-                title: 'Classroom',
+                title: 'Classroom lists',
                 href: route('classroom.index'),
                 icon: BookOpen,
                 available: menus.classroom,
               },
-            ]}
-            label="Master data"
-          />
-          <NavMain
-            items={[
               {
                 title: 'User management',
                 href: route('user.index'),

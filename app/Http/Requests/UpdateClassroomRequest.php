@@ -17,7 +17,7 @@ class UpdateClassroomRequest extends FormRequest
         return [
             'name' => 'nullable|string|max:255',
             'url' => 'nullable|string|max:255',
-            'code' => 'nullable|string|max:6',
+            'code' => 'nullable|string|max:6|unique:classrooms,code,' . $this->classroom->id,
             'user_id' => 'nullable',
             'description' => 'nullable|string',
             'visibility' => 'nullable|in:' . implode(',', Classroom::$enumVisibility),

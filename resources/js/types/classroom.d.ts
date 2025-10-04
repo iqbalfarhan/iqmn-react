@@ -11,6 +11,9 @@ export type Classroom = {
   description: string;
   url: string | null;
   visibility: EnumVisibility;
+  members: User[];
+  media: Media[];
+  cover: string;
   materials: Material[];
   created_at: string;
   updated_at: string;

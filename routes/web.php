@@ -39,6 +39,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('classroom/{classroom}/assignments', [AssignmentController::class, 'index'])->name('classroom.assignments');
     Route::get('classroom/{classroom}/scores', [ClassroomController::class, 'show'])->name('classroom.scores');
     Route::get('classroom/{classroom}/members', [ClassroomController::class, 'show'])->name('classroom.members');
+    Route::post('classroom/{classroom}/upload-media', [ClassroomController::class, 'uploadMedia'])->name('classroom.upload-media');
+    Route::post('classroom/join', [ClassroomController::class, 'join'])->name('classroom.join');
     Route::put('classroom/bulk', [ClassroomController::class, 'bulkUpdate'])->name('classroom.bulk.update');
     Route::delete('classroom/bulk', [ClassroomController::class, 'bulkDelete'])->name('classroom.bulk.destroy');
     Route::resource('classroom', ClassroomController::class);

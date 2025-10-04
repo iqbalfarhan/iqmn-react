@@ -6,6 +6,7 @@ use App\Http\Requests\StoreClassroomRequest;
 use App\Http\Requests\UpdateClassroomRequest;
 use App\Http\Requests\BulkUpdateClassroomRequest;
 use App\Http\Requests\BulkDeleteClassroomRequest;
+use App\Http\Requests\UploadClassroomMediaRequest;
 use App\Models\Classroom;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class ClassroomController extends Controller
         $this->pass("index classroom");
         
         $data = Classroom::query()
-            ->with(['user', 'materials'])
+            ->with(['media', 'user', 'materials'])
             ->when($request->name, function($q, $v){
                 $q->where('name', $v);
             });
@@ -59,8 +60,9 @@ class ClassroomController extends Controller
         $this->pass("show classroom");
 
         return Inertia::render('classroom/show', [
-            'classroom' => $classroom->load(['materials', 'user']),
+            'classroom' => $classroom->load(['materials', 'user', 'members']),
             'permissions' => [
+                'classroomFeedCreate' => $this->user->can('create feed', $classroom),
                 'canUpdate' => $this->user->can("update classroom"),
                 'canDelete' => $this->user->can("delete classroom"),
             ]
@@ -72,7 +74,7 @@ class ClassroomController extends Controller
         $this->pass("edit classroom");
 
         return Inertia::render('classroom/edit', [
-            'classroom' => $classroom,
+            'classroom' => $classroom->load('media'),
             'permissions' => [
                 'canUpdate' => $this->user->can("update classroom"),
                 'canDelete' => $this->user->can("delete classroom"),
@@ -124,6 +126,36 @@ class ClassroomController extends Controller
 
         $data = $request->validated();
         Classroom::whereIn('id', $data['classroom_ids'])->delete();
+    }
+
+    public function join(Request $request)
+    {
+        $this->pass("join classroom");
+
+        $request->validate([
+            'code' => 'required|string|max:6',
+        ]);
+
+        $classroom = Classroom::where('code', $request->code)->first();
+        
+        if ($classroom->code !== $request->code) {
+            return redirect()->back()->withErrors([
+                'code' => 'Invalid code',
+            ]);
+        }
+
+        $classroom->members()->attach($this->user->id);
+    }
+
+    /**
+     * Register media conversions.
+     */
+    public function uploadMedia(UploadClassroomMediaRequest $request, Classroom $classroom)
+    {
+        $this->pass("update classroom");
+
+        $data = $request->validated();
+        $classroom->addMedia($data['file'])->toMediaCollection();
     }
 
     

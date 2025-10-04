@@ -21,9 +21,10 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 type Props = {
   classrooms: Classroom[];
+  memberof: Classroom[];
 };
 
-const Dashboard: FC<Props> = ({ classrooms = [] }) => {
+const Dashboard: FC<Props> = ({ classrooms = [], memberof = [] }) => {
   const {
     auth: { roles },
   } = usePage<SharedData>().props;
@@ -35,6 +36,10 @@ const Dashboard: FC<Props> = ({ classrooms = [] }) => {
         <DateTimeWidget />
       </div>
       <div className="grid-responsive grid gap-4">
+        {memberof.map((classroom) => (
+          <ClassroomItemCard key={classroom.id} classroom={classroom} isMember />
+        ))}
+
         {classrooms.map((classroom) => (
           <ClassroomItemCard key={classroom.id} classroom={classroom} />
         ))}

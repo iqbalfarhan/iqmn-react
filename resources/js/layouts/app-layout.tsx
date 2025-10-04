@@ -59,7 +59,7 @@ export default ({
         </div>
         {children}
       </div>
-      <Toaster position="top-center" />
+      <Toaster position="top-center" richColors />
     </AppLayoutTemplate>
   );
 };

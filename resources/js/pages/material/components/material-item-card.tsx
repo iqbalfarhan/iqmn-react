@@ -2,6 +2,7 @@ import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Material } from '@/types/material';
+import { router } from '@inertiajs/react';
 import { FC } from 'react';
 
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
 const MaterialItemCard: FC<Props> = ({ material, className }) => {
   return (
     <Card className={className}>
-      <CardHeader className="h-full">
+      <CardHeader className="h-full" onClick={() => router.visit(route('material.show', material.id))}>
         <CardTitle className="leading-normal">{material.name}</CardTitle>
         <CardDescription className="line-clamp-1">{material.url}</CardDescription>
       </CardHeader>

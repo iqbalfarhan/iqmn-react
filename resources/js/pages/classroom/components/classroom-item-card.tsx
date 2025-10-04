@@ -9,9 +9,11 @@ import { FC } from 'react';
 type Props = {
   classroom: Classroom;
   className?: string;
+  isMember?: boolean;
 };
 
-const ClassroomItemCard: FC<Props> = ({ classroom, className }) => {
+const ClassroomItemCard: FC<Props> = ({ classroom, className, isMember = false }) => {
+  console.log(isMember);
   return (
     <Card className={className}>
       <CardHeader onClick={() => router.visit(route('classroom.overview', classroom.id))} className="h-full">
@@ -19,13 +21,17 @@ const ClassroomItemCard: FC<Props> = ({ classroom, className }) => {
         <CardTitle className="leading-normal">{classroom.name}</CardTitle>
       </CardHeader>
       <CardContent>
-        <Skeleton className="aspect-video w-full" />
+        {classroom.cover ? (
+          <img src={classroom.cover} alt="" className="h-48 w-full rounded-lg object-cover" />
+        ) : (
+          <Skeleton className="h-48 w-full" />
+        )}
       </CardContent>
       <CardFooter className="flex items-center justify-between space-x-2">
         <Badge variant={'secondary'}>{classroom.materials.length} materials</Badge>
         <Avatar className="size-6">
           <AvatarFallback>?</AvatarFallback>
-          <AvatarImage src={classroom.user.avatar} />
+          <AvatarImage src={classroom.user?.avatar} />
         </Avatar>
       </CardFooter>
     </Card>

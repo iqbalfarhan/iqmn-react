@@ -78,6 +78,9 @@ return [
         "dashboard" => [
             "profile" => ["*"],
             "documentation" => ["*"]
+        ],
+        "classroom" => [
+            "join classroom" => ["*"],
         ]
     ],
 
