@@ -80,7 +80,7 @@ const ClassroomFormSheet: FC<Props> = ({ children, classroom, purpose }) => {
             <FormControl label="Description">
               <Textarea placeholder="Name" value={data.description} onChange={(e) => setData('description', e.target.value)} />
             </FormControl>
-            <FormControl label="Description">
+            <FormControl label="Visibility">
               <Select value={data.visibility} onValueChange={(value) => setData('visibility', value as EnumVisibility)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select a visibility" />

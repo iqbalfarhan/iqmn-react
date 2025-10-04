@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\AssignmentController;
+
 
 
 
@@ -34,7 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('classroom/{classroom}/overview', [ClassroomController::class, 'show'])->name('classroom.overview');
     Route::get('classroom/{classroom}/materials', [MaterialController::class, 'index'])->name('classroom.materials');
-    Route::get('classroom/{classroom}/assignments', [ClassroomController::class, 'show'])->name('classroom.assignments');
+    Route::get('classroom/{classroom}/assignments', [AssignmentController::class, 'index'])->name('classroom.assignments');
     Route::get('classroom/{classroom}/scores', [ClassroomController::class, 'show'])->name('classroom.scores');
     Route::get('classroom/{classroom}/members', [ClassroomController::class, 'show'])->name('classroom.members');
     Route::put('classroom/bulk', [ClassroomController::class, 'bulkUpdate'])->name('classroom.bulk.update');
@@ -45,6 +47,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('material/bulk', [MaterialController::class, 'bulkDelete'])->name('material.bulk.destroy');
     Route::post('material/{material}/upload-media', [MaterialController::class, 'uploadMedia'])->name('material.upload-media');
     Route::apiResource('material', MaterialController::class)->except('index');
+    Route::put('assignment/bulk', [AssignmentController::class, 'bulkUpdate'])->name('assignment.bulk.update');
+    Route::delete('assignment/bulk', [AssignmentController::class, 'bulkDelete'])->name('assignment.bulk.destroy');
+    Route::post('assignment/{assignment}/upload-media', [AssignmentController::class, 'uploadMedia'])->name('assignment.upload-media');
+    Route::apiResource('assignment', AssignmentController::class)->except('index');
 });
 
 require __DIR__.'/settings.php';
