@@ -12,14 +12,14 @@ const ClassroomSidebar: FC<Props> = ({ classroom }) => {
   return (
     <SidebarContent className="space-y-4">
       <NavMain
+        className="mt-4"
         items={[
           {
-            title: 'Back to Dashboard',
+            title: 'Back to dashboard',
             href: route('dashboard'),
             icon: ArrowLeft,
           },
         ]}
-        label="Classroom"
       />
       <NavMain
         label={classroom.name}

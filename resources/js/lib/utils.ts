@@ -117,3 +117,8 @@ export function formatRupiah(angka: number): string {
     minimumFractionDigits: 0,
   }).format(angka);
 }
+
+export function generate6DigitCode(): string {
+  const n = Math.floor(Math.random() * 1_000_000); // 0 - 999999
+  return n.toString().padStart(6, '0');
+}

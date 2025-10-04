@@ -2,23 +2,22 @@
 
 namespace Database\Factories;
 
+use App\Models\Material;
 use App\Models\Classroom;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ClassroomFactory extends Factory
+class MaterialFactory extends Factory
 {
-    protected $model = Classroom::class;
+    protected $model = Material::class;
 
     public function definition(): array
     {
         return [
             'name' => fake()->sentence(),
-            'code' => fake()->numerify('######'),
-            'user_id' => User::pluck('id')->random(),
             'description' => fake()->paragraph(),
             'url' => fake()->url(),
-            'visibility' => fake()->randomElement(Classroom::$enumVisibility),
+            'classroom_id' => Classroom::pluck('id')->random(),
+            'visible' => fake()->boolean(),
         ];
     }
 }

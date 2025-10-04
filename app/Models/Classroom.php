@@ -39,4 +39,14 @@ class Classroom extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class);
+    }
+
+    public function scopeMine($q)
+    {
+        return $q->where('user_id', auth()->id());
+    }
 }

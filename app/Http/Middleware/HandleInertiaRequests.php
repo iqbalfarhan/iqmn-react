@@ -55,6 +55,7 @@ class HandleInertiaRequests extends Middleware
                 "role" => $user?->can('menu role'),
                 "adminer" => $enableAdminerMenu ? $user?->can('menu adminer') : false,
                 "classroom" => $user?->can('menu classroom'),
+                "material" => $user?->can('menu material'),
                 // add feature name here
                 // example:
                 // "customer" => $user?->can('menu customer'),

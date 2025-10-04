@@ -9,7 +9,9 @@ export type Classroom = {
   user_id: User['id'];
   user: User;
   description: string;
+  url: string | null;
   visibility: EnumVisibility;
+  materials: Material[];
   created_at: string;
   updated_at: string;
 };

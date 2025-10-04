@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/input-otp';
 import { Check, Plus } from 'lucide-react';
@@ -7,15 +6,11 @@ import { Check, Plus } from 'lucide-react';
 const ClassroomJoinDialog = () => {
   return (
     <Dialog>
-      <DialogTrigger>
-        <Card className="aspect-video size-full cursor-pointer border-4 border-dashed opacity-50 hover:opacity-100">
-          <CardContent className="flex flex-1 flex-col items-center justify-center space-y-6">
-            <Button variant={'ghost'} size={'lg'}>
-              <Plus />
-              Join classroom
-            </Button>
-          </CardContent>
-        </Card>
+      <DialogTrigger asChild>
+        <Button variant={'secondary'} size={'lg'}>
+          <Plus />
+          Join classroom
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

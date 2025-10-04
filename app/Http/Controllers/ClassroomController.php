@@ -22,7 +22,7 @@ class ClassroomController extends Controller
         $this->pass("index classroom");
         
         $data = Classroom::query()
-            ->with(['user'])
+            ->with(['user', 'materials'])
             ->when($request->name, function($q, $v){
                 $q->where('name', $v);
             });
@@ -59,7 +59,7 @@ class ClassroomController extends Controller
         $this->pass("show classroom");
 
         return Inertia::render('classroom/show', [
-            'classroom' => $classroom,
+            'classroom' => $classroom->load(['materials', 'user']),
             'permissions' => [
                 'canUpdate' => $this->user->can("update classroom"),
                 'canDelete' => $this->user->can("delete classroom"),

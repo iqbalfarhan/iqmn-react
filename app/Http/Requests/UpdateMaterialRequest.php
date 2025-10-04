@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Classroom;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreClassroomRequest extends FormRequest
+class UpdateMaterialRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,11 +15,9 @@ class StoreClassroomRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'url' => 'nullable|string|max:255',
-            'code' => 'required|string|max:255',
-            'user_id' => 'required|exists:users,id',
             'description' => 'required|string',
-            'visibility' => 'required|in:' . implode(',', Classroom::$enumVisibility),
+            'url' => 'required|string|max:255',
+            'visible' => 'required|boolean',
         ];
     }
 }
